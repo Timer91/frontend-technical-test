@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 16px;
 }
 
 #__next {
@@ -38,4 +39,5 @@ img {
     rgba(238, 242, 244, 0.4) 0%,
     rgba(238, 242, 244, 0) 100%
   );
+  --message-text-bg: #f1f2f6;
 }

@@ -1,10 +1,4 @@
-#conversations {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-#conversations #container {
+#chat {
     display: flex;
     margin: auto;
     width: 80vw;
@@ -12,14 +6,13 @@
     border: 1px solid var(--border-color);
 }
 
-#conversationContainerTitle {
-    padding: 10px 0;
+#conversationsTitle {
     text-align: center;
     border-bottom: 1px solid var(--border-color);
     background-color: rgba( 0, 0, 0, .02);
 }
 
-#conversationsList {
+#conversations {
     width: 33%;
     border-right: 1px solid var(--border-color);
     overflow-y: auto;
@@ -38,15 +31,9 @@
     transition: .2s;
     z-index: 1;
 }
-.conversation:hover {
-    background-color: var( --conversation-hover-bg );
-}
-.conversationSelected {
-    background: var( --active-conversation-bg );
-    border-left: 4px solid var( --theme-color );
-}
 
-.conversation::before {
+/* isConnected feature */
+/* .conversation::before {
     content: "";
     position: absolute;
     background-color: #23be7e;
@@ -56,6 +43,15 @@
     border: 2px solid var(--theme-bg-color);
     left: 50px;
     bottom: 19px;
+} */
+
+.conversation:hover {
+    background-color: var( --conversation-hover-bg );
+}
+
+.selected {
+    background: var( --active-conversation-bg );
+    border-left: 4px solid var( --theme-color );
 }
 
 .conversation img {
@@ -78,6 +74,10 @@
 
 .conversation .convDetails .convLastDate {
     font-size: 14px;
-    color: var(--msg-date);
-    margin-left: 3px;
+    color: var( --msg-date );
+}
+
+.message {
+    display: flex;
+    
 }
