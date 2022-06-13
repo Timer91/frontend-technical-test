@@ -39,9 +39,9 @@
     color: #fff;
 }
 
-.messageTimestamp {
+.messageDate {
     margin-top: 2px;
-    color: #999;
+    font-size: var( --timestamp-ft-size );
     font-style: italic;
-    font-size: .9em;
+    color: var( --timestamp-color );
 }

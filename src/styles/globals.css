@@ -40,4 +40,6 @@ img {
     rgba(238, 242, 244, 0) 100%
   );
   --message-text-bg: #f1f2f6;
+  --timestamp-ft-size: .8em;
+  --timestamp-color: #999
 }
