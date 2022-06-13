@@ -10,16 +10,15 @@ interface IConversation {
 }
 
 interface IConversations {
-  conversations: IConversation[],
   selectedId: number,
   setSelected: ( id: number ) => void,
   children?: FC
 }
 
 interface IConversationItem {
+  conversation: IConversation,
   onClick: ( id: number ) => void,
   selectedId: number,
-  conversation: IConversation,
 }
 
 export type { IConversation, IConversations, IConversationItem };

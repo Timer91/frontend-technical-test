@@ -25,8 +25,9 @@ const Message: FC<IMessageItem> = ( props: IMessageItem ) => {
                 </div>
             </div>
             <Timestamp
-                className={styles.messageTimestamp}
+                className={`${styles.timestamp} ${styles.messageDate}` }
                 relative
+                autoUpdate
                 date={props.message.timestamp}
             />
         </div>

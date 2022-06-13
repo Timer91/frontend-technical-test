@@ -7,7 +7,7 @@ export interface IMessage {
 }
 
 export interface IMessages {
-  messages: IMessage[]
+  conversationId: number
 }
 
 export interface IMessageItem {

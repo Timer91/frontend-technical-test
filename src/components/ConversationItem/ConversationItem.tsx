@@ -1,32 +1,45 @@
-import { FC } from 'react'
-import { IConversationItem } from '../../types/conversation';
+import { FC, useEffect, useRef, useState } from 'react'
+import { IConversation, IConversationItem } from '../../types/conversation';
 import Timestamp from 'react-timestamp';
-import styles from '../../styles/Chat.module.css';
+import styles from '../../styles/Conversations.module.css';
+
+const isSelected = ( selectedId: number, conversationId: number ) => {
+    return selectedId === conversationId ? styles.selected : "";
+};
 
 const ConversationItem: FC<IConversationItem> = ( props : IConversationItem ) => {
+    let
+        [ conversation, setConversation ] = useState<IConversation>( null ),
+        conversationItem = useRef<HTMLDivElement>( null );
+    ;
+
     const
-        classNames: string[] = [
-            styles.conversation,
-            props.selectedId === props.conversation.id ? styles.selected : ''
+        conversationItemClass: string[] = [
+            styles.conversationItem,
+            isSelected( props?.selectedId, conversation?.id )
         ]
     ;
 
+    useEffect( () => {
+        setConversation( props.conversation );
+    }, [ props.conversation ] );
+
     return(
         <div
-            className={classNames.join( ' ' )}
-            onClick={props.onClick.bind( this, props.conversation.id )}
+            ref={conversationItem}
+            onClick={props.onClick.bind( this, conversation?.id )}
+            className={conversationItemClass.join( ' ' )}
         >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png"
-                alt=""
-            />
-            <div className={styles.convDetails}>
-                <div className={styles.convName}>
-                    {props.conversation.recipientNickname}
+            <div className={styles.conversationList}>
+                <div className={styles.conversationName}>
+                    {conversation?.recipientNickname}
                 </div>
-                <div className={styles.convLastDate}>
-                    <Timestamp relative date={props.conversation.lastMessageTimestamp}/>
+                <div className={styles.conversationDate}>
+                    <Timestamp
+                        relative
+                        autoUpdate
+                        date={conversation?.lastMessageTimestamp}
+                    />
                 </div>
             </div>
         </div>
