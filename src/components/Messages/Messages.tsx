@@ -6,8 +6,7 @@ import { fetchAPI } from '../../utils/fetch';
 
 const Messages: FC<IMessages> = ( props: IMessages ) => {
     const
-        [ messages, setMessages ] = useState<IMessage[]>( [] ),
-        messagesRef = useRef<HTMLInputElement>( null )
+        [ messages, setMessages ] = useState<IMessage[]>( [] )
     ;
 
     useEffect( () => {
@@ -18,21 +17,21 @@ const Messages: FC<IMessages> = ( props: IMessages ) => {
             .then( res => {
                 setMessages( res.body );
             } )
-            .catch( error => console.error( error ) );
+            .catch( error => {
+                console.error( error );
+            } );
         }
     }, [ props.conversationId ] )
 
     return(
-        <div
-            id={styles.messages}
-            ref={messagesRef}
-        >
-            { messages.map( ( message: IMessage ) => (
-                <Message
-                    key={message.id}
-                    message={message}
-                />
-            ) ) }
+        <div id={styles.messages}>
+        {
+            !messages.length
+                ?   <p className={styles.empty}>Select a conversation</p>
+                :   messages.map( ( message: IMessage ) => (
+                        <Message key={message.id} message={message}/>
+                    ) )
+        }
         </div>
     )
 }

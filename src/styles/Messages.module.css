@@ -6,6 +6,23 @@
     overflow-y: scroll;
 }
 
+.empty {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    font-style: italic;
+    color: #ccc;
+    animation: flash 1.5s linear infinite;
+}
+
+@keyframes flash {
+    50% {
+        opacity: .2;
+    }
+}
+
 .message {
     display: flex;
     flex-direction: column;
@@ -44,4 +61,9 @@
     font-size: var( --timestamp-ft-size );
     font-style: italic;
     color: var( --timestamp-color );
+}
+
+#sendMessage {
+    display: flex;
+    flex: 1;
 }
