@@ -1,31 +1,15 @@
-import { useState, FC } from 'react';
-import Conversations from '../Conversations/Conversations';
+import { FC } from 'react';
+import { IChat } from '../../types/chat';
 import Messages from '../Messages/Messages';
 import styles from '../../styles/Chat.module.css';
 
-const Chat: FC = () => {
-    let
-        [ selectedConv, setSelectedConv ] = useState<number>( -1 )
-    ;
-    
-    const
-        handleSelectConversation = ( convId: number ) => {
-            setSelectedConv( convId );
-        };
-    ;
-    
-    return (
+const Chat: FC<IChat> = ( props: IChat ) => {
+    return(
         <div id={styles.chat}>
-            <Conversations
-                setSelected={ handleSelectConversation }
-                selectedId={ selectedConv }
-            />
-            <Messages
-                conversationId={ selectedConv }
-            />
+            <Messages conversationId={props.conversationId} />
+            {/* <SendMessage /> */}
         </div>
-    );
+    )
 }
 
 export default Chat;
-

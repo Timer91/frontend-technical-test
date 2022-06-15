@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { loggedUserId } from '../../pages/_app';
-import { IMessage, IMessageItem } from "../../types/message";
+import { IMessage, IMessageItem } from "../../types/chat";
 import styles from "../../styles/Messages.module.css"
 import Timestamp from "react-timestamp";
 

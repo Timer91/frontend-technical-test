@@ -11,6 +11,7 @@ body {
 }
 
 #__next {
+  display: flex;
   flex: 1;
 }
 
@@ -28,6 +29,10 @@ img {
 }
 img {
     border-style: none;
+}
+
+#conversations {
+    width: 33vw;
 }
 
 :root {

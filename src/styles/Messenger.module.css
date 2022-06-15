@@ -1,5 +1,13 @@
 #messenger {
+    flex: 1;
     display: flex;
-    width: 100%;
-    height: 100%;
+    border: 1px solid var(--border-color);
+}
+
+.conversationOverride {
+    width: 30vw !important;
+}
+
+#chatOverride {
+    width: 70vw !important;
 }

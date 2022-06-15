@@ -21,7 +21,10 @@ const Conversations: FC<IConversations> = ( props : IConversations ) => {
     }, [] );
 
     return(
-        <div id={styles.conversations}>
+        <div
+            id={styles.conversations}
+            className={props?.className}
+        >
             <div id={styles.conversationsTitle}>
                 <h3>Conversations</h3>
             </div>

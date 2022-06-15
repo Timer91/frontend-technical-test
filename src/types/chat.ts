@@ -6,7 +6,7 @@ export interface IMessage {
   body: string
 }
 
-export interface IMessages {
+export interface IChat {
   conversationId: number
 }
 
