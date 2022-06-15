@@ -6,7 +6,8 @@ import { fetchAPI } from '../../utils/fetch';
 
 const Messages: FC<IMessages> = ( props: IMessages ) => {
     const
-        [ messages, setMessages ] = useState<IMessage[]>( [] )
+        [ messages, setMessages ] = useState<IMessage[]>( [] ),
+        messagesRef = useRef<HTMLDivElement>( null )
     ;
 
     useEffect( () => {
@@ -23,8 +24,19 @@ const Messages: FC<IMessages> = ( props: IMessages ) => {
         }
     }, [ props.conversationId ] )
 
+    useEffect( () => {
+        if ( messages.length ) {
+            messagesRef.current?.scroll( {
+                top: document.body.offsetHeight
+            } );
+        }
+    }, [ messages ] );
+
     return(
-        <div id={styles.messages}>
+        <div
+            id={styles.messages}
+            ref={messagesRef}
+        >
         {
             !messages.length
                 ?   <p className={styles.empty}>Select a conversation</p>
