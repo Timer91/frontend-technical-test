@@ -33,7 +33,7 @@ const Conversations: FC<IConversations> = ( props : IConversations ) => {
                 <ConversationItem
                     key={conversation.id}
                     conversation={conversation}
-                    onClick={props.setSelected}
+                    onClick={props.onClick}
                     selectedId={props.selectedId}
                 />
             ) ) }

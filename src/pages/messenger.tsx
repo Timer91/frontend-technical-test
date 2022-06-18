@@ -9,13 +9,6 @@ const Messenger: FC = () => {
         [ selectedConv, setSelectedConv ] = useState<number>( -1 )
     ;
     
-    const
-        handleSelectConversation = ( convId: number ) => {
-            setSelectedConv( convId );
-        };
-    ;
-    
-
     return (
         <div id={styles.messenger}>
             <Head>
@@ -23,7 +16,7 @@ const Messenger: FC = () => {
             </Head>
             <Conversations
                 className={styles.conversationOverride}
-                setSelected={ handleSelectConversation }
+                onClick={ setSelectedConv }
                 selectedId={ selectedConv }
             />
             <Chat

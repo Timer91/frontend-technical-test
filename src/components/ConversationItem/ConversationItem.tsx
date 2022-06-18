@@ -27,7 +27,7 @@ const ConversationItem: FC<IConversationItem> = ( props : IConversationItem ) =>
     return(
         <div
             ref={conversationItem}
-            onClick={props.onClick.bind( this, conversation?.id )}
+            onClick={() => props.onClick(conversation?.id)}
             className={conversationItemClass.join( ' ' )}
         >
             <div className={styles.conversationList}>

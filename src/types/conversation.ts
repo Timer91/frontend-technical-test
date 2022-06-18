@@ -12,7 +12,7 @@ interface IConversation {
 interface IConversations {
   className: any
   selectedId: number,
-  setSelected: ( id: number ) => void,
+  onClick: ( id: number ) => void,
   children?: FC
 }
 
