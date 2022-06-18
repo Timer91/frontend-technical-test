@@ -17,7 +17,9 @@ const Conversations: FC<IConversations> = ( props : IConversations ) => {
         .then( res => {
             setConversations( res.body );
         } )
-        .catch( error => console.error( error ) );
+        .catch( error => {
+            console.error( error )
+        } );
     }, [] );
 
     return(

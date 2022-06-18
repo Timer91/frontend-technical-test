@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Messenger.module.css';
 import Conversations from '../components/Conversations/Conversations';
-import Chat from '../components/Chat/chat';
+import Chat from '../components/Chat/Chat';
 
 const Messenger: FC = () => {
     let
@@ -10,18 +10,18 @@ const Messenger: FC = () => {
     ;
     
     return (
-        <div id={styles.messenger}>
+        <div id={ styles.messenger }>
             <Head>
                 <title>LeBonCoin - Chats</title>
             </Head>
             <Conversations
-                className={styles.conversationOverride}
                 onClick={ setSelectedConv }
                 selectedId={ selectedConv }
+                className={ styles.conversation }
             />
             <Chat
-                className={styles.chatOverride}
                 conversationId={ selectedConv }
+                className={ styles.chat }
             />
         </div>
     );
