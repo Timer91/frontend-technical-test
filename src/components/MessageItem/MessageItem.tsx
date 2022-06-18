@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { loggedUserId } from '../../pages/_app';
-import { IMessage, IMessageItem } from "../../types/chat";
+import { IMessageItem } from "../../types/message";
 import styles from "../../styles/Messages.module.css"
 import Timestamp from "react-timestamp";
 
@@ -12,20 +12,20 @@ const Message: FC<IMessageItem> = ( props: IMessageItem ) => {
     const
         message = props.message,
         classNames: string[] = [
-            styles.message,
+            styles.messageItem,
             isOwner( message.authorId, loggedUserId ) ? styles.owner : ''
         ]
     ;
 
     return (
         <div className={classNames.join( ' ' )}>
-            <div className={styles.messageContent}>
-                <div className={styles.messageText}>
+            <div className={styles.messageItemContent}>
+                <div className={styles.messageItemText}>
                     { props.message.body }
                 </div>
             </div>
             <Timestamp
-                className={`${styles.timestamp} ${styles.messageDate}` }
+                className={`${styles.timestamp} ${styles.messageItemDate}` }
                 relative
                 autoUpdate
                 date={props.message.timestamp}

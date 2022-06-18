@@ -7,64 +7,43 @@
     overflow-y: scroll;
 }
 
-.empty {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    font-size: 3vw;
-    font-style: italic;
-    color: #ccc;
-    animation: flash 1.5s linear infinite;
-}
-
-@keyframes flash {
-    50% {
-        opacity: .2;
-    }
-}
-
-.message {
+.messageItem {
     display: flex;
     flex-direction: column;
     padding: 0 20px 15px;
-    font-size: .9em;
+    font-size: 1em;
 }
 
-.message:first-child {
+.messageItem:first-child {
     padding: 15px 20px;
 }
 
-.message.owner {
+.messageItem.owner {
     align-items: flex-end;
 }
 
-.messageContent {
+.messageItemContent {
     display: flex;
 }
 
-.messageText {
-    display: flex;
-    padding: 10px;
+.messageItemText {
+    padding: 7px 12px;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
     border-radius: 20px 20px 20px 0;
     font-weight: 300;
     background-color: var( --message-text-bg );
 }
 
-.owner .messageText {
+.owner .messageItemText {
     --message-text-bg: var( --theme-color );
     border-radius: 20px 20px 0px 20px;
     color: #fff;
 }
 
-.messageDate {
+.messageItemDate {
     margin-top: 2px;
     font-size: var( --timestamp-ft-size );
     font-style: italic;
     color: var( --timestamp-color );
-}
-
-#sendMessage {
-    display: flex;
-    flex: 1;
 }

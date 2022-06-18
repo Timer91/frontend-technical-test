@@ -31,14 +31,17 @@ const Conversations: FC<IConversations> = ( props : IConversations ) => {
                 <h3>Conversations</h3>
             </div>
             <>
-            { conversations.map( ( conversation ) => (
-                <ConversationItem
-                    key={conversation.id}
-                    conversation={conversation}
-                    onClick={props.onClick}
-                    selectedId={props.selectedId}
-                />
-            ) ) }
+            {   !conversations.length
+                    ? <p className="empty">No conversation found</p>
+                    : conversations.map( ( conversation ) => (
+                        <ConversationItem
+                            key={conversation.id}
+                            conversation={conversation}
+                            onClick={props.onClick}
+                            selectedId={props.selectedId}
+                        />
+                    ) )
+            }
             </>
         </div>
     )

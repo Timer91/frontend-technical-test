@@ -10,9 +10,9 @@ interface IConversation {
 }
 
 interface IConversations {
-  className: any
   selectedId: number,
   onClick: ( id: number ) => void,
+  className?: string
   children?: FC
 }
 

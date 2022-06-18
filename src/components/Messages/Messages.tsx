@@ -1,8 +1,9 @@
 import { FC, useRef, useEffect, useState } from 'react'
-import { IChat, IMessage } from '../../types/chat';
-import styles from '../../styles/Messages.module.css';
-import Message from '../Message/Message';
+import Message from '../MessageItem/MessageItem';
 import { fetchAPI } from '../../utils/fetch';
+import { IChat } from '../../types/chat';
+import { IMessage } from '../../types/message';
+import styles from '../../styles/Messages.module.css';
 
 const Messages: FC<IChat> = ( props: IChat ) => {
     const
@@ -37,13 +38,12 @@ const Messages: FC<IChat> = ( props: IChat ) => {
         <div
             id={styles.messages}
             ref={messagesRef}
+            className={props?.className}
         >
         {
-            !messages.length
-                ?   <p className={styles.empty}>Select a conversation</p>
-                :   messages.map( ( message: IMessage ) => (
-                        <Message key={message.id} message={message}/>
-                    ) )
+            messages.map( ( message: IMessage ) => (
+                <Message key={message.id} message={message}/>
+            ) )
         }
         </div>
     )
