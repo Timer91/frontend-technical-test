@@ -6,6 +6,13 @@ interface IMessage {
   body: string
 }
 
+interface IMessages {
+  conversationId: number,
+  className?: string,
+  refresh: boolean
+  setRefresh: (value: boolean) => void,
+}
+
 interface IMessageItem {
   message: IMessage
 }
@@ -14,4 +21,4 @@ interface ISendMessage {
   className?: string
 }
 
-export type { IMessage, IMessageItem, ISendMessage };
+export type { IMessage, IMessages, IMessageItem };

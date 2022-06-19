@@ -1,11 +1,10 @@
 import { FC, useRef, useEffect, useState } from 'react'
 import Message from '../MessageItem/MessageItem';
 import { fetchAPI } from '../../utils/fetch';
-import { IChat } from '../../types/chat';
-import { IMessage } from '../../types/message';
+import { IMessages, IMessage } from '../../types/message';
 import styles from '../../styles/Messages.module.css';
 
-const Messages: FC<IChat> = ( props: IChat ) => {
+const Messages: FC<IMessages> = ( props: IMessages ) => {
     const
         [ messages, setMessages ] = useState<IMessage[]>( [] ),
         messagesRef = useRef<HTMLDivElement>( null )
