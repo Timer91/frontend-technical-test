@@ -6,7 +6,7 @@ import Chat from '../components/Chat/Chat';
 
 const Messenger: FC = () => {
     let
-        [ selectedConv, setSelectedConv ] = useState<number>( -1 )
+        [ selectedConv, setSelectedConv ] = useState<number>( null )
     ;
     
     return (

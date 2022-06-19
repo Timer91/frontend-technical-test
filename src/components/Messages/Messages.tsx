@@ -12,7 +12,7 @@ const Messages: FC<IChat> = ( props: IChat ) => {
     ;
 
     useEffect( () => {
-        if ( props.conversationId !== -1 ) {
+        if ( props.conversationId ) {
             fetchAPI( {
                 url: `/messages/${props.conversationId}`
             } )
@@ -23,6 +23,8 @@ const Messages: FC<IChat> = ( props: IChat ) => {
                 console.error( error );
             } );
         }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ props.conversationId ] )
 
     useEffect( () => {

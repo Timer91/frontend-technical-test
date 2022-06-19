@@ -11,7 +11,7 @@ const Chat: FC<IChat> = ( props: IChat ) => {
             className={props.className}
         >
         {
-            props.conversationId === -1
+            !props.conversationId
                 ? <p className="empty">Select a conversation</p>
                 : (
                     <>
