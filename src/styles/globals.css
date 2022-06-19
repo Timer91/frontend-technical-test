@@ -53,14 +53,20 @@ img {
 :root {
   --theme-color: #0086ff;
   --border-color: #e5eaed;
-  --conversation-hover-bg: rgba(238, 242, 244, 0.4);
+  --theme-hover-bg: rgba(238, 242, 244, 0.7);
+  /* conversations */
   --active-conversation-bg: linear-gradient(
     to right,
     rgba(238, 242, 244, 0.4) 0%,
     rgba(238, 242, 244, 0) 100%
   );
+  /* messages */
   --message-text-bg: #f1f2f6;
   --timestamp-ft-size: .8em;
   --timestamp-color: #999;
-  --input-bg: #f8f8fa;
+  /* sendmessage */
+  --sendmessage-padding: 10px;
+  --sendmessage-item-padding: var( --sendmessage-padding );
+  --sendmessage-item-margin: 0 2px;
+  --sendmessage-input-bg: #f8f8fa;
 }

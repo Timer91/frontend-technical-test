@@ -10,7 +10,7 @@
 
 #conversationsTitle {
     text-align: center;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var( --border-color );
     background-color: rgba( 0, 0, 0, .02);
 }
 
@@ -25,7 +25,7 @@
 }
 
 .conversationItem:hover {
-    background-color: var( --conversation-hover-bg );
+    background-color: var( --theme-hover-bg );
 }
 
 .conversationItem.selected {
