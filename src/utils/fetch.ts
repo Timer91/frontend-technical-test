@@ -15,11 +15,16 @@ const newHeaders = ( obj: Object ): Headers => {
 }
 
 export const fetchAPI = ( props: IFetch ): Promise<any> => {
+    let headers = {
+        "Content-type": "application/json",
+        ... props?.params?.headers
+    };
+
     return fetch(
         `${API}${props.url}`,
         {
             method: props?.params?.method || "GET",
-            headers: newHeaders( props?.params?.headers ),
+            headers: newHeaders( headers ),
             body: JSON.stringify( props?.params?.body )
         }
     )
