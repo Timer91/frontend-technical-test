@@ -18,7 +18,6 @@ const Messages: FC<IChat> = ( props: IChat ) => {
             } )
             .then( res => {
                 setMessages( res.body );
-                console.log( 1 )
             } )
             .catch( error => {
                 console.error( error );
