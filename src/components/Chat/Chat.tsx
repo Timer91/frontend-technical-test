@@ -1,10 +1,14 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { IChat } from '../../types/chat';
 import Messages from '../Messages/Messages';
-// import SendMessage from '../SendMessage/SendMessage';
+import SendMessage from '../SendMessage/SendMessage';
 import styles from '../../styles/Chat.module.css';
 
 const Chat: FC<IChat> = ( props: IChat ) => {
+    let
+        [ refresh, setRefresh ] = useState<boolean>( false )
+    ;
+
     return(
         <div
             id={styles.chat}
@@ -18,10 +22,14 @@ const Chat: FC<IChat> = ( props: IChat ) => {
                         <Messages
                             conversationId={props.conversationId}
                             className={styles.messages}
+                            refresh={refresh}
+                            setRefresh={setRefresh}
                         />
-                        {/* <SendMessage
+                        <SendMessage
+                            conversationId={props.conversationId}
                             className={styles.sendMessage}
-                        /> */}
+                            setRefresh={setRefresh}
+                        />
                     </>
                 )
         }

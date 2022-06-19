@@ -11,12 +11,13 @@ const Messages: FC<IMessages> = ( props: IMessages ) => {
     ;
 
     useEffect( () => {
-        if ( props.conversationId ) {
+        if ( props.conversationId || props.refresh ) {
             fetchAPI( {
                 url: `/messages/${props.conversationId}`
             } )
             .then( res => {
                 setMessages( res.body );
+                props.setRefresh( false );
             } )
             .catch( error => {
                 console.error( error );
@@ -24,7 +25,7 @@ const Messages: FC<IMessages> = ( props: IMessages ) => {
         }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ props.conversationId ] )
+    }, [ props.conversationId, props.refresh ] )
 
     useEffect( () => {
         if ( messages.length ) {

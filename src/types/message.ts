@@ -18,7 +18,9 @@ interface IMessageItem {
 }
 
 interface ISendMessage {
+  conversationId: number,
+  setRefresh: (value: boolean) => void,
   className?: string
 }
 
-export type { IMessage, IMessages, IMessageItem };
+export type { IMessage, IMessages, IMessageItem, ISendMessage };
