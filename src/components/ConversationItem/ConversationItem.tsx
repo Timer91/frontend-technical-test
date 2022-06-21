@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import { IConversation, IConversationItem } from '../../types/conversation';
-import Timestamp from 'react-timestamp';
 import styles from '../../styles/Conversations.module.css';
+import timestampToMoment from '../../utils/timestampToMoment';
 
 const isSelected = ( selectedId: number, conversationId: number ) => {
     return selectedId === conversationId ? styles.selected : "";
@@ -35,11 +35,7 @@ const ConversationItem: FC<IConversationItem> = ( props : IConversationItem ) =>
                     {conversation?.recipientNickname}
                 </div>
                 <div className={styles.conversationDate}>
-                    <Timestamp
-                        relative
-                        autoUpdate
-                        date={conversation?.lastMessageTimestamp}
-                    />
+                    {timestampToMoment(conversation?.lastMessageTimestamp)}
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
-import { FC } from "react"
+import { FC } from 'react';
 import { loggedUserId } from '../../pages/_app';
-import { IMessageItem } from "../../types/message";
-import styles from "../../styles/Messages.module.css"
-import Timestamp from "react-timestamp";
+import { IMessageItem } from '../../types/message';
+import styles from '../../styles/Messages.module.css';
+import timestampToMoment from '../../utils/timestampToMoment';
 
 function isOwner( authorId, loggedUserId ) {
     return authorId === loggedUserId;
@@ -24,12 +24,9 @@ const Message: FC<IMessageItem> = ( props: IMessageItem ) => {
                     { props.message.body }
                 </div>
             </div>
-            <Timestamp
-                className={`${styles.timestamp} ${styles.messageItemDate}` }
-                relative
-                autoUpdate
-                date={props.message.timestamp}
-            />
+            <div className={`${styles.timestamp} ${styles.messageItemDate}` }>
+                {timestampToMoment(props.message.timestamp)}
+            </div>
         </div>
     );
 };
