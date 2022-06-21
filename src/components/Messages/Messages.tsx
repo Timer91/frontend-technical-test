@@ -1,6 +1,6 @@
 import { FC, useRef, useEffect, useState } from 'react'
 import Message from '../MessageItem/MessageItem';
-import { fetchAPI } from '../../utils/fetch';
+import fetchData from '../../utils/fetch';
 import { IMessages, IMessage } from '../../types/message';
 import styles from '../../styles/Messages.module.css';
 
@@ -12,11 +12,11 @@ const Messages: FC<IMessages> = ( props: IMessages ) => {
 
     useEffect( () => {
         if ( props.conversationId || props.refresh ) {
-            fetchAPI( {
+            fetchData( {
                 url: `/messages/${props.conversationId}`
             } )
             .then( res => {
-                setMessages( res.body );
+                setMessages( res.data );
                 props.setRefresh( false );
             } )
             .catch( error => {

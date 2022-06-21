@@ -3,7 +3,7 @@ import { ISendMessage } from "../../types/message";
 import styles from "../../styles/SendMessage.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
-import { fetchAPI } from "../../utils/fetch";
+import fetchData from "../../utils/fetch";
 import { getLoggedUserId } from "../../utils/getLoggedUserId";
 
 
@@ -20,7 +20,7 @@ const SendMessage: FC<ISendMessage> = ( props: ISendMessage ) => {
             if ( !isSending && props.conversationId && message ) {
                 setIsSending( true );
 
-                fetchAPI( {
+                fetchData( {
                     url: `/messages/${props.conversationId}`,
                     params: {
                         method: "POST",

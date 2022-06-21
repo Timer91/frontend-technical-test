@@ -1,38 +1,18 @@
 import { IFetch } from "../types/fetch";
+import axios from 'axios';
 
 const API: string = "http://localhost:3005";
 
-const newHeaders = ( obj: Object ): Headers => {
-    const headers: Headers = new Headers();
-
-    if ( obj && Object.keys( obj ).length ) {
-        for ( const [ key, value ] of Object.entries( obj ) ) {
-            headers.append( key, value );
+const fetchData = ( props: IFetch ): Promise<any> => {
+    return axios( {
+        url: `${API}${props.url}`,
+        method: props?.params?.method || "GET",
+        data: JSON.stringify( props?.params?.body ),
+        headers: {
+            "Content-type": "application/json",
+            ... props?.params?.headers
         }
-    }
-    
-    return headers;
+    } );
 }
 
-export const fetchAPI = ( props: IFetch ): Promise<any> => {
-    let headers = {
-        "Content-type": "application/json",
-        ... props?.params?.headers
-    };
-
-    return fetch(
-        `${API}${props.url}`,
-        {
-            method: props?.params?.method || "GET",
-            headers: newHeaders( headers ),
-            body: JSON.stringify( props?.params?.body )
-        }
-    )
-    .then( res => {
-        if ( !res.ok ) {
-            throw new Error( `${res.status}` );
-        }
-        return res.json()
-            .then( data => ( { status: res.status, body: data } ) );
-    } )
-}
+export default fetchData;

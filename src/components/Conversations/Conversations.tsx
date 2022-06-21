@@ -3,7 +3,8 @@ import { IConversation, IConversations } from '../../types/conversation'
 import ConversationItem from '../ConversationItem/ConversationItem';
 import styles from '../../styles/Conversations.module.css';
 import { loggedUserId } from '../../pages/_app';
-import { fetchAPI } from '../../utils/fetch';
+import fetchData from '../../utils/fetch';
+import axios from 'axios';
 
 const Conversations: FC<IConversations> = ( props : IConversations ) => {
     let
@@ -11,11 +12,11 @@ const Conversations: FC<IConversations> = ( props : IConversations ) => {
     ;
 
     useEffect( () => {
-        fetchAPI( {
+        fetchData( {
             url: `/conversations?senderId=${loggedUserId}`
         } )
         .then( res => {
-            setConversations( res.body );
+            setConversations( res.data );
         } )
         .catch( error => {
             console.error( error )
