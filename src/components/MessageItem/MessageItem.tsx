@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { loggedUserId } from '../../pages/_app';
 import { IMessageItem } from '../../types/message';
 import styles from '../../styles/Messages.module.css';
 import timestampToMoment from '../../utils/timestampToMoment';
+import { getLoggedUserId } from '../../utils/getLoggedUserId';
 
 function isOwner(authorId, loggedUserId) {
     return authorId === loggedUserId;
@@ -10,6 +10,7 @@ function isOwner(authorId, loggedUserId) {
 
 const Message: FC<IMessageItem> = (props: IMessageItem) => {
     const
+        loggedUserId = getLoggedUserId(),
         message = props.message,
         classNames: string[] = [
             styles.messageItem,

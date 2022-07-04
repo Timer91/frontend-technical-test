@@ -2,10 +2,13 @@ import { FC, useEffect, useState } from 'react'
 import { IConversation, IConversations } from '../../types/conversation'
 import ConversationItem from '../ConversationItem/ConversationItem';
 import styles from '../../styles/Conversations.module.css';
-import { API_URL, loggedUserId } from '../../pages/_app';
+import { API_URL } from '../../pages/_app';
 import axios from 'axios';
+import { getLoggedUserId } from '../../utils/getLoggedUserId';
 
 const Conversations: FC<IConversations> = (props: IConversations) => {
+    const loggedUserId = getLoggedUserId();
+
     let [conversations, setConversations] = useState<IConversation[]>([]);
 
     useEffect(() => {
@@ -15,9 +18,9 @@ const Conversations: FC<IConversations> = (props: IConversations) => {
                 setConversations(res.data);
             })
             .catch(error => {
-                console.error(error)
+                console.error(error);
             });
-    }, []);
+    }, [loggedUserId]);
 
     return (
         <div
