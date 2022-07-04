@@ -1,8 +1,9 @@
 import { FC, useRef, useEffect, useState } from 'react'
 import Message from '../MessageItem/MessageItem';
-import fetchData from '../../utils/fetch';
 import { IMessages, IMessage } from '../../types/message';
 import styles from '../../styles/Messages.module.css';
+import axios from 'axios';
+import { API_URL } from '../../pages/_app';
 
 const Messages: FC<IMessages> = ( props: IMessages ) => {
     const
@@ -10,18 +11,17 @@ const Messages: FC<IMessages> = ( props: IMessages ) => {
         messagesRef = useRef<HTMLDivElement>( null )
     ;
 
-    useEffect( () => {
-        if ( props.conversationId || props.refresh ) {
-            fetchData( {
-                url: `/messages/${props.conversationId}`
-            } )
-            .then( res => {
-                setMessages( res.data );
-                props.setRefresh( false );
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
+    useEffect(() => {
+        if (props.conversationId || props.refresh) {
+            axios
+                .get(`${API_URL}/messages/${props.conversationId}`)
+                .then(res => {
+                    setMessages(res.data);
+                    props.setRefresh(false);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

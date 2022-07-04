@@ -2,8 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import { IConversation, IConversations } from '../../types/conversation'
 import ConversationItem from '../ConversationItem/ConversationItem';
 import styles from '../../styles/Conversations.module.css';
-import { loggedUserId } from '../../pages/_app';
-import fetchData from '../../utils/fetch';
+import { API_URL, loggedUserId } from '../../pages/_app';
 import axios from 'axios';
 
 const Conversations: FC<IConversations> = ( props : IConversations ) => {

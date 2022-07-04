@@ -3,8 +3,9 @@ import { ISendMessage } from "../../types/message";
 import styles from "../../styles/SendMessage.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
-import fetchData from "../../utils/fetch";
 import { getLoggedUserId } from "../../utils/getLoggedUserId";
+import axios from "axios";
+import { API_URL } from "../../pages/_app";
 
 
 const SendMessage: FC<ISendMessage> = ( props: ISendMessage ) => {
@@ -20,11 +21,10 @@ const SendMessage: FC<ISendMessage> = ( props: ISendMessage ) => {
             if ( !isSending && props.conversationId && message ) {
                 setIsSending( true );
 
-                fetchData( {
-                    url: `/messages/${props.conversationId}`,
-                    params: {
-                        method: "POST",
-                        body: {
+                axios
+                    .post(
+                        `${API_URL}/messages/${selectedConversation}`,
+                        {
                             conversationId: props.conversationId,
                             authorId: getLoggedUserId(),
                             timestamp: new Date().getTime(),
