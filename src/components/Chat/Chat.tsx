@@ -1,38 +1,37 @@
-import { FC, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import { IChat } from '../../types/chat';
 import Messages from '../Messages/Messages';
 import SendMessage from '../SendMessage/SendMessage';
 import styles from '../../styles/Chat.module.css';
+import { ConversationCtx } from '../../pages/messenger';
 
-const Chat: FC<IChat> = ( props: IChat ) => {
-    let
-        [ refresh, setRefresh ] = useState<boolean>( false )
-    ;
+const Chat: FC<IChat> = (props: IChat) => {
+    let [refresh, setRefresh] = useState<boolean>(false);
 
-    return(
+    const { selectedConversation, } = useContext(ConversationCtx);
+
+    return (
         <div
             id={styles.chat}
             className={props.className}
         >
-        {
-            !props.conversationId
-                ? <p className="empty">Select a conversation</p>
-                : (
-                    <>
-                        <Messages
-                            conversationId={props.conversationId}
-                            className={styles.messages}
-                            refresh={refresh}
-                            setRefresh={setRefresh}
-                        />
-                        <SendMessage
-                            conversationId={props.conversationId}
-                            className={styles.sendMessage}
-                            setRefresh={setRefresh}
-                        />
-                    </>
-                )
-        }
+            {
+                !selectedConversation
+                    ? <p className="empty">Select a conversation</p>
+                    : (
+                        <>
+                            <Messages
+                                className={styles.messages}
+                                refresh={refresh}
+                                setRefresh={setRefresh}
+                            />
+                            <SendMessage
+                                className={styles.sendMessage}
+                                setRefresh={setRefresh}
+                            />
+                        </>
+                    )
+            }
         </div>
     )
 }

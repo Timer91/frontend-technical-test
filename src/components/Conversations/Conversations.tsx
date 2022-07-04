@@ -5,24 +5,21 @@ import styles from '../../styles/Conversations.module.css';
 import { API_URL, loggedUserId } from '../../pages/_app';
 import axios from 'axios';
 
-const Conversations: FC<IConversations> = ( props : IConversations ) => {
-    let
-        [ conversations, setConversations ] = useState<IConversation[]>( [] )
-    ;
+const Conversations: FC<IConversations> = (props: IConversations) => {
+    let [conversations, setConversations] = useState<IConversation[]>([]);
 
-    useEffect( () => {
-        fetchData( {
-            url: `/conversations?senderId=${loggedUserId}`
-        } )
-        .then( res => {
-            setConversations( res.data );
-        } )
-        .catch( error => {
-            console.error( error )
-        } );
-    }, [] );
+    useEffect(() => {
+        axios
+            .get(`${API_URL}/conversations?senderId=${loggedUserId}`)
+            .then(res => {
+                setConversations(res.data);
+            })
+            .catch(error => {
+                console.error(error)
+            });
+    }, []);
 
-    return(
+    return (
         <div
             id={styles.conversations}
             className={props?.className}
@@ -31,17 +28,15 @@ const Conversations: FC<IConversations> = ( props : IConversations ) => {
                 <h3>Conversations</h3>
             </div>
             <>
-            {   !conversations.length
+                {!conversations.length
                     ? <p className="empty">No conversation found</p>
-                    : conversations.map( ( conversation ) => (
+                    : conversations.map((conversation) => (
                         <ConversationItem
                             key={conversation.id}
                             conversation={conversation}
-                            onClick={props.onClick}
-                            selectedId={props.selectedId}
                         />
-                    ) )
-            }
+                    ))
+                }
             </>
         </div>
     )

@@ -7,7 +7,6 @@ interface IMessage {
 }
 
 interface IMessages {
-  conversationId: number,
   className?: string,
   refresh: boolean
   setRefresh: (value: boolean) => void,
@@ -18,7 +17,6 @@ interface IMessageItem {
 }
 
 interface ISendMessage {
-  conversationId: number,
   setRefresh: (value: boolean) => void,
   className?: string
 }

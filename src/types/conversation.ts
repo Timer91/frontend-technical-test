@@ -10,16 +10,12 @@ interface IConversation {
 }
 
 interface IConversations {
-  selectedId: number,
-  onClick: ( id: number ) => void,
   className?: string
   children?: FC
 }
 
 interface IConversationItem {
   conversation: IConversation,
-  onClick: ( id: number ) => void,
-  selectedId: number,
 }
 
 export type { IConversation, IConversations, IConversationItem };

@@ -1,28 +1,33 @@
-import { FC, useState } from 'react';
+import { createContext, FC, useContext, useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Messenger.module.css';
 import Conversations from '../components/Conversations/Conversations';
 import Chat from '../components/Chat/Chat';
+import { ConversationContext } from '../types/messenger';
+
+export const ConversationCtx = createContext<ConversationContext | null>(null);
 
 const Messenger: FC = () => {
-    let
-        [ selectedConv, setSelectedConv ] = useState<number>( null )
-    ;
-    
+    const [selected, setSelected] = useState<number | null>(null);
+
+    const contextInit: ConversationContext = {
+        selectedConversation: selected,
+        setSelectedConversation: setSelected
+    }
+
     return (
-        <div id={ styles.messenger }>
+        <div id={styles.messenger}>
             <Head>
                 <title>LeBonCoin - Chats</title>
             </Head>
-            <Conversations
-                onClick={ setSelectedConv }
-                selectedId={ selectedConv }
-                className={ styles.conversation }
-            />
-            <Chat
-                conversationId={ selectedConv }
-                className={ styles.chat }
-            />
+            <ConversationCtx.Provider value={contextInit}>
+                <Conversations
+                    className={styles.conversation}
+                />
+                <Chat
+                    className={styles.chat}
+                />
+            </ConversationCtx.Provider>
         </div>
     );
 }
