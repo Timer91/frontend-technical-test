@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    restart: always
+    ports:
+      - 3000:3000
+  json-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.jsonserver
+    ports:
+      - "3005:3000"
+    volumes:
+      - ./src/server/:/data/
+    restart: always

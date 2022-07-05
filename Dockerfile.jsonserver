@@ -1,0 +1,7 @@
+FROM node:latest
+
+RUN npm install -g json-server
+
+WORKDIR /data
+
+CMD ["json-server", "-H", "0.0.0.0", "-w", "db.json", "-r", "routes.json", "-m", "middleware/conversations.js"]
