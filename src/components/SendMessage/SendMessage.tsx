@@ -6,12 +6,12 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import { getLoggedUserId } from "../../utils/getLoggedUserId";
 import axios from "axios";
 import { API_URL } from "../../pages/_app";
-import { ConversationCtx } from "../../pages/messenger";
+import { ConversationContext } from "../../context/conversationContext";
 
 
 const SendMessage: FC<ISendMessage> = (props: ISendMessage) => {
     let
-        { selectedConversation, } = useContext(ConversationCtx),
+        { selectedConversation, } = useContext(ConversationContext),
         inputRef = useRef<HTMLInputElement>(null),
         [isSending, setIsSending] = useState<boolean>(false);
 

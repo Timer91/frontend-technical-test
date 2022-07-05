@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { Dispatch, FC, SetStateAction } from "react"
 
 interface IConversation {
   id: number
@@ -15,7 +15,23 @@ interface IConversations {
 }
 
 interface IConversationItem {
-  conversation: IConversation,
+  conversation: IConversation
 }
 
-export type { IConversation, IConversations, IConversationItem };
+interface IConversationContext {
+  selectedConversation: number | null
+  setSelectedConversation: Dispatch<SetStateAction<number>>
+}
+
+interface IConversationProvider {
+  children?: React.ReactNode
+}
+
+
+export type {
+  IConversation,
+  IConversations,
+  IConversationItem,
+  IConversationContext,
+  IConversationProvider
+};

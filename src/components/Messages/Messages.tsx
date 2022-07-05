@@ -4,11 +4,12 @@ import { IMessages, IMessage } from '../../types/message';
 import styles from '../../styles/Messages.module.css';
 import axios from 'axios';
 import { API_URL } from '../../pages/_app';
-import { ConversationCtx } from '../../pages/messenger';
+import { ConversationContext } from '../../context/conversationContext';
+import { IConversationContext } from '../../types/conversation';
 
 const Messages: FC<IMessages> = (props: IMessages) => {
     const
-        { selectedConversation, } = useContext(ConversationCtx),
+        { selectedConversation, } = useContext<IConversationContext>(ConversationContext),
         [messages, setMessages] = useState<IMessage[]>([]),
         messagesRef = useRef<HTMLDivElement>(null);
 

@@ -1,8 +1,8 @@
 import { FC, useContext, useEffect, useRef, useState } from 'react'
-import { IConversation, IConversationItem } from '../../types/conversation';
+import { IConversation, IConversationContext, IConversationItem } from '../../types/conversation';
 import styles from '../../styles/Conversations.module.css';
 import timestampToMoment from '../../utils/timestampToMoment';
-import { ConversationCtx } from '../../pages/messenger';
+import { ConversationContext } from '../../context/conversationContext';
 
 const isSelected = (selectedId: number, conversationId: number) => {
     return selectedId === conversationId ? styles.selected : "";
@@ -10,7 +10,7 @@ const isSelected = (selectedId: number, conversationId: number) => {
 
 const ConversationItem: FC<IConversationItem> = (props: IConversationItem) => {
     let
-        { selectedConversation, setSelectedConversation } = useContext(ConversationCtx),
+        { selectedConversation, setSelectedConversation } = useContext<IConversationContext>(ConversationContext),
         [conversation, setConversation] = useState<IConversation>(null),
         conversationItem = useRef<HTMLDivElement>(null);
 

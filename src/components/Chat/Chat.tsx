@@ -3,12 +3,13 @@ import { IChat } from '../../types/chat';
 import Messages from '../Messages/Messages';
 import SendMessage from '../SendMessage/SendMessage';
 import styles from '../../styles/Chat.module.css';
-import { ConversationCtx } from '../../pages/messenger';
+import { ConversationContext } from '../../context/conversationContext';
+import { IConversationContext } from '../../types/conversation';
 
 const Chat: FC<IChat> = (props: IChat) => {
     let [refresh, setRefresh] = useState<boolean>(false);
 
-    const { selectedConversation, } = useContext(ConversationCtx);
+    const { selectedConversation, } = useContext<IConversationContext>(ConversationContext);
 
     return (
         <div
