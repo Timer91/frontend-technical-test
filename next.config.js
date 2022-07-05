@@ -8,4 +8,8 @@ module.exports = {
   },
   images: {
   },
+  reactStrictMode: true,
+  experimental: {
+    outputStandalone: true,
+  }
 }
