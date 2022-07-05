@@ -30,6 +30,7 @@ const ConversationItem: FC<IConversationItem> = (props: IConversationItem) => {
 
     return (
         <div
+            data-testid="conversationItem"
             ref={conversationItem}
             onClick={() => handleClick(conversation?.id)}
             className={conversationItemClass.join(' ')}
