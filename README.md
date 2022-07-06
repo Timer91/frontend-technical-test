@@ -2,6 +2,8 @@
 
 A proof of concept of a messaging interface.
 
+Following intructions : [`docs/intructions.md`](https://github.com/Timer91/frontend-technical-test/blob/main/docs/instructions.md)
+
 ## Getting Started
 
 ### Prerequisites
