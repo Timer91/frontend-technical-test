@@ -1,71 +1,69 @@
-# Context :
+# Front-end technical test
 
-At leboncoin, our users can share messages about a transaction, or ask for informations about any products.
+A proof of concept of a messaging interface.
 
-Your job is to create the interface to consult those messages.
-The interface needs to work on both desktop & mobile devices.
+## Getting Started
 
-In addition to your code, a README explaining your thought process and your choices would be appreciated.
+### Prerequisites
 
-# Exercice :
+- Docker
+- Docker-Compose
 
-- Display a list of all the conversations
-- Allow the user to select a conversation
-  - Inside the conversation, there is a list of all the messages between these two users.
-  - As a user, you can type and send new messages in this conversation
+### Installation
 
-**As your application can be used by millions of users, make sure to provide some robust safety guards.**
+- Clone the repo
+   ```sh
+   git clone https://github.com/Timer91/frontend-technical-test
+   ```
+- Launch the project with Docker
+   ```sh
+   docker-compose up --build
+   ```
 
-### Sketches :
+### How to use
 
-Obvisouly, it is up to you to make something nice and pretty, you are free to design it the way you like. The sketches are here to give you an idea on how it should look.
+On your browser, open :  
 
-<details>
-  <summary>Click to see the sketches</summary>
-  
-Mobile list :
+[http://localhost:3000/messenger](http://localhost:3000/messenger)
 
-![](./sketches/list-mobile.jpg)
+## Project architecture
 
-Desktop list :
+This project has been thinking in Web Components.
 
-![](./sketches/list-desktop.jpg)
+### Messenger page
 
-Mobile conversation :
+```sh
+Conversations
+├─ ConversationItem
+Chat
+├─ Messages
+│  ├─ MessageItem
+├─ SendMessage
+```
 
-![](./sketches/conv-mobile.jpg)
+On this app: 
+- you are logged by default with the first user (id: 1)
+- the provided _json-server_ API is used for getting user's conversations and send some messages into it
+- the getted conversations are listed in _Conversations_ component
+- the getted messages are display on _Messages_ component
+- you can send messages with _SendMessage_ component
 
-Desktop conversation :
+Those components works with a main context which store the selected conversation ID.
+_Conversations_ and _Chat_ components are self-reliant and responsive. Moreover, you can pass it a custom CSS class for implement it whereever you would.
+Indeed, you can put the _Conversations_ component at the right of your page fix to the border, and open a _Chat_ component each time you select a conversation, like Messenger.
 
-![](./sketches/conv-desktop.jpg)
+### What next
 
-</details>
+- [] Implement a SSO or a homemade authenticate service
+- [] Implement a notification system
+- [] Use socket.io library
+- [] Implement a loading component like Messenger' one
+- [] Implement more unit and integration tests
 
-### API :
+## Author
 
-You can find the API swagger file in `docs/api-swagger.yaml`.
+Jérémie ([Timer91](https://github.com/timer91)) Marais
 
-For a better readibility, you can view it on [https://leboncoin.tech/frontend-technical-test/](https://leboncoin.tech/frontend-technical-test/).
+## Acknowledgements
 
----
-
-## Bonus 1 :
-
-We provide some conversation samples, but can you improve the app so the user can now create new conversations ?
-
-## Bonus 2 :
-
-Our infrastructure is a bit shaky.. Sometimes the servers are crashing. “It’s not you, it’s me”, but maybe you can display something nice to warn the user and handle it gracefully.
-
-## Do you want to make the app even better ?
-
-Feel free to make as many improvements as you like.
-We love creativity and technical challenges.
-
-If you are out of ideas, here are some thoughts :
-
-- As we want to reach our users anywhere, we need to make sure the app is performing well. What can you do to make it really fast ?
-
-- Our goal is to support everybody in the country, including people with disabilities. As a good citizen and a good developer, can you make sure the app is accessible for everyone ?
-
-- We all love to relax after a hard day’s work. It would be a shame if we didn’t feel confident enough about the upcoming automatic deployment. Are you sure everything has been tested thoroughly ?
+Thanks to LeBonCoin for giving me the opportunity to let me demonstrate my skills.
